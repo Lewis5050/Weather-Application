@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>Weather_App_3._0</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Images.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\AirPressure.png" />
+    <None Remove="Resources\Cloudy.jpg" />
+    <None Remove="Resources\CornishBeach.jpg" />
+    <None Remove="Resources\Humidity.png" />
+    <None Remove="Resources\Navigation.png" />
+    <None Remove="Resources\Rain.png" />
+    <None Remove="Resources\RainIcon.png" />
+    <None Remove="Resources\Scattered-Cloud.jpg" />
+    <None Remove="Resources\Snow.png" />
+    <None Remove="Resources\Snowflake.png" />
+    <None Remove="Resources\Sun.png" />
+    <None Remove="Resources\Wind.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </Resource>
+    <Resource Include="Resources\AirPressure.png" />
+    <Resource Include="Resources\Cloudy.jpg" />
+    <Resource Include="Resources\CornishBeach.jpg" />
+    <Resource Include="Resources\Humidity.png" />
+    <Resource Include="Resources\Navigation.png" />
+    <Resource Include="Resources\Rain.png" />
+    <Resource Include="Resources\RainIcon.png" />
+    <Resource Include="Resources\Scattered-Cloud.jpg" />
+    <Resource Include="Resources\Snow.png" />
+    <Resource Include="Resources\Snowflake.png" />
+    <Resource Include="Resources\Sun.png" />
+    <Resource Include="Resources\Wind.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Images.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

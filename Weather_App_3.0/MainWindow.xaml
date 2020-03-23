@@ -1,0 +1,140 @@
+﻿<Window x:Class="Weather_App_3._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Weather_App_3._0"
+        mc:Ignorable="d"
+        Title="Weather Application" Height="530" Width="900" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,227,0">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="288*"></ColumnDefinition>
+                    <ColumnDefinition Width="385*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Current Date Label || Column 0 -->
+                <Label x:Name="currentDateLabel" Content="Sun 29 June" Margin="60,30,0,0" FontFamily="Nirmala UI Semilight" FontSize="22" Foreground="Gray" Grid.Column="0"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <!-- Search Bar -->
+                    <TextBox x:Name="SearchBox" Margin="0 35 0 0" Height="18px" Width="150px" Grid.Column="1" HorizontalAlignment="Left"/>
+
+                    <!-- Search Button -->
+                    <Button x:Name="SearchButton" Margin="10 35 0 0" Height="20" Width="80" Content="Search" FontFamily="Nirmala UI Semilight" FontSize="11" Background="#FFF3C32A" Foreground="White" BorderBrush="{x:Null}" Click="SearchButton_Click"/>
+                    <Button x:Name="ShowAdvInfoButton" HorizontalAlignment="Left" Margin="5 35 0 0" Height="20" Width="22" Content="⮟" FontFamily="Nirmala UI Semilight" FontSize="11" Background="#FFF3C32A" Foreground="White" BorderBrush="{x:Null}" Click="ShowAdvInfoButton_Click"/>
+                </StackPanel>
+
+            </Grid>
+
+            <!-- Location Label -->
+            <Label x:Name= "locationLabel" Content="{Binding City, UpdateSourceTrigger=PropertyChanged}" Margin="60,10,0,0" FontFamily="Nirmala UI Semilight" FontSize="48" Foreground="#FFEEBA2A"/>
+
+            <!-- Current Temperature + Current Weather Icon -->
+            <StackPanel Orientation="Horizontal">
+
+                <!-- Current Temperature Label 20°C-->
+                <Label x:Name="currentTemperatureLabel" Content="{Binding Temperature, UpdateSourceTrigger=PropertyChanged}" Margin="70,30,0,0" FontFamily="Nirmala UI Semilight" FontSize="64" Foreground="#FFEEBA2A"/>
+                <Label Content="°C" Margin="0,30,0,0" FontFamily="Nirmala UI Semilight" FontSize="64" Foreground="#FFEEBA2A"/>
+
+
+                <!-- TO ADD Current Weather Icon -->
+                <Image Source="{Binding MainWeatherImage}" Margin="60,20,0,0" Width="112" Height="112"/>
+
+            </StackPanel>
+            
+            <!-- Forecast, and Additional Information -->
+            <StackPanel x:Name="ForecastPanel" Orientation="Horizontal">
+
+                <!-- Forecast Day 1 -->
+                <StackPanel Margin="60,50,0,0">
+                    <Label Content="{Binding Days[1], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding ForecastDayOneImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding ForecastTemperatures[0], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Forecast Day 2 -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="{Binding Days[2], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding ForecastDayOneImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding ForecastTemperatures[1], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Forecast Day 3 -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="{Binding Days[3], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding ForecastDayOneImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding ForecastTemperatures[2], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Forecast Day 4 -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="{Binding Days[4], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding ForecastDayOneImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding ForecastTemperatures[3], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Forecast Day 5 -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="{Binding Days[5], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding ForecastDayOneImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding ForecastTemperatures[4], UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Additional Information -->
+            <StackPanel x:Name="AdvInformationPanel" Orientation="Horizontal">
+
+                <!-- Wind Speed -->
+                <StackPanel Margin="60,50,0,0">
+                    <Label Content="Wind Speed" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding WindSpeedImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding WindSpeed, UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Wind Direction -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="Wind Direction" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding WindDirectionImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding WindDirection, UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Air Pressure -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="Air Pressure" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding AirPressureImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding AirPressure, UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Humidity -->
+                <StackPanel Margin="50,50,0,0">
+                    <Label Content="Humidity" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                    <Image Source="{Binding HumidityImage, UpdateSourceTrigger=PropertyChanged}" Width="56" Height="56"/>
+                    <Label Content="{Binding Humidity, UpdateSourceTrigger=PropertyChanged}" FontFamily="Nirmala UI Semilight" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Resources/CornishBeach.jpg"/>
+            </StackPanel.Background>
+
+            <Label Name="TimeLabel" Margin="0 60 0 0" Content="00:00" HorizontalAlignment="Center" FontSize="72" Foreground="White" FontFamily="Nirmala UI Semilight"/>
+            <Label Name="TimeSecondsLabel" Margin="100 -20 0 0" Content="00:00" HorizontalAlignment="Center" FontSize="24" Foreground="White" FontFamily="Nirmala UI Semilight"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
