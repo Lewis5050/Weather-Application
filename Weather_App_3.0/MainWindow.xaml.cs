@@ -44,6 +44,7 @@ namespace Weather_App_3._0
             time.Tick += TimerTick;
             time.Start();
 
+
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
